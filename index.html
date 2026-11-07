@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nima-sarrafi | Developer Toolbox</title>
+    <!-- Tailwind CSS Play CDN (No build step required) -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Lucide Icons Development Script -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        /* Optional custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-gray-800 bg-gray-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i data-lucide="terminal" class="w-6 h-6 text-indigo-400"></i>
+                <span class="font-bold text-lg tracking-wide text-white">nima-sarrafi</span>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium text-gray-400">
+                <a href="#snippets" class="hover:text-white transition">Snippets</a>
+                <a href="#tools" class="hover:text-white transition">Tools</a>
+                <a href="https://github.com" target="_blank" class="hover:text-white transition flex items-center space-x-1">
+                    <span>GitHub</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-1 w-full">
+        <!-- Hero Section -->
+        <section class="text-center max-w-2xl mx-auto mb-16">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl mb-4">
+                Centralized Brand Snippets
+            </h1>
+            <p class="text-gray-400 text-lg">
+                A single-file configuration tool and reference space hosted under the organization profile.
+            </p>
+        </section>
+
+        <!-- Dynamic Grid Section -->
+        <section id="snippets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1: Zephyr RTOS Config -->
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500 transition duration-200 flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Zephyr RTOS Setup</h3>
+                    <p class="text-gray-400 text-sm mb-4">Baseline prj.conf parameters for enabling TLS sockets and optimizing heap structure boundaries.</p>
+                </div>
+                <button onclick="copySnippet('CONFIG_NET_SOCKETS_SOCKOPT_TLS=y')" class="w-full bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center space-x-2 transition">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copy Config</span>
+                </button>
+            </div>
+
+            <!-- Card 2: Git Pre-Commit Config -->
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500 transition duration-200 flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
+                        <i data-lucide="git-branch"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pre-Commit Monorepo</h3>
+                    <p class="text-gray-400 text-sm mb-4">Strict line-length limitations and linting triggers configured for distributed repository paths.</p>
+                </div>
+                <button onclick="copySnippet('repos:\n  - repo: https://github.com')" class="w-full bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center space-x-2 transition">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copy YAML</span>
+                </button>
+            </div>
+
+            <!-- Card 3: Yocto CI Runner Policy -->
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-indigo-500 transition duration-200 flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Yocto Pipeline Rules</h3>
+                    <p class="text-gray-400 text-sm mb-4">Automation framework logic utilizing shared sstate cache points and local download directories.</p>
+                </div>
+                <button onclick="copySnippet('SSTATE_DIR ?= \x22${TOPDIR}/sstate-cache\x22')" class="w-full bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center space-x-2 transition">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                    <span>Copy BitBake Vars</span>
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-gray-900 py-6">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 space-y-4 sm:space-y-0">
+            <div>&copy; 2026 nima-sarrafi. All code snippets provided under standard MIT licensing agreements.</div>
+            <div class="flex space-x-4">
+                <a href="https://github.com" target="_blank" class="hover:underline">Personal Profile</a>
+                <a href="https://github.com" target="_blank" class="hover:underline">Org Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Scripts -->
+    <script>
+        // Initialize Lucide SVG Icons replacement dynamically
+        lucide.createIcons();
+
+        // Standardized functional feedback for copy-to-clipboard action
+        function copySnippet(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Snippet copied directly to clipboard!');
+            }).catch(err => {
+                console.error('Failed to write execution string: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
